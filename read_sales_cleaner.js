@@ -1,30 +1,32 @@
 var fs = require('fs')
 module.exports = function(salesDataFilePath){
-
 	this.leastPopular = function(){
 
 		var productSales = productsSalesInfo(salesDataFilePath)
-		
 		productSales.sort(function(product1, product2){
 			return product1.qty - product2.qty;
 		});
-		
 		var mostPopularProduct = productSales[0]
 		return mostPopularProduct;
 	}
 
 	this.mostPopular = function(){
-
 		var productSales = productsSalesInfo(salesDataFilePath)
-
 		productSales.sort(function(product1, product2){
 			return product1.qty - product2.qty;
 		});
-
 		var leastPopular = productSales[productSales.length-1]
 		return leastPopular;
 	}
-
+	
+	function productsSalesInfo(filePath){
+		var salesData = readSalesData(filePath);
+		removeHeader(salesData);
+		var salesPerProduct = salesPerProduct(salesData);
+		var productSales = createSalesList(salesPerProduct);
+		return productSales;
+	}
+	
 	function readSalesData(filePath){
 		var fileContents = fs.readFileSync(filePath, 'utf8');
 		var lines = fileContents.split('\r');
@@ -68,15 +70,4 @@ module.exports = function(salesDataFilePath){
 		}
 		return salesList;
 	}
-
-	function productsSalesInfo(filePath){
-		var salesData = readSalesData(filePath);
-		removeHeader(salesData);
-		var salesPerProduct = salesPerProduct(salesData);
-		var productSales = createSalesList(salesPerProduct);
-		return productSales;
-	}
-
-
-
 }
