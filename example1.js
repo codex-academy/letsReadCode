@@ -1,7 +1,7 @@
 var fs = require('fs')
 module.exports = function(f){
 
-this.mostPopular = function(){
+this.pop = function(){
 
 	var c = fs.readFileSync(f, 'utf8');
 	var lines = c.split('\r');
@@ -44,7 +44,7 @@ return salesList[salesList.length - 1];
 		
 	}
 
-	this.leastPopular = function(){
+	this.least = function(){
 
 	var c = fs.readFileSync(f, 'utf8');
 	var lines = c.split('\r');
