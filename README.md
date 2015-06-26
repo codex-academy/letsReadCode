@@ -6,7 +6,7 @@ As your career as a developer progress your code reading skills will start to be
 
 # Areas of focus
 
-* Be intenional
+* Be intentional
     * Does your code communicate what you are doing
 * Seperate concerns
     * Split your code up properly
