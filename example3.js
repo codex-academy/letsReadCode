@@ -1,6 +1,6 @@
 var fs = require('fs')
 module.exports = function(salesDataFilePath){
-	this.leastPopular = function(){
+	this.getLeastPopularProduct = function(){
 
 		var productSales = productsSalesInfo(salesDataFilePath)
 		productSales.sort(function(product1, product2){
@@ -10,13 +10,13 @@ module.exports = function(salesDataFilePath){
 		return mostPopularProduct;
 	}
 
-	this.mostPopular = function(){
+	this.getMostPopularProduct = function(){
 		var productSales = productsSalesInfo(salesDataFilePath)
 		productSales.sort(function(product1, product2){
 			return product1.qty - product2.qty;
 		});
-		var leastPopular = productSales[productSales.length-1]
-		return leastPopular;
+		var leastPopularProduct = productSales[productSales.length-1]
+		return leastPopularProduct;
 	}
 	
 	function productsSalesInfo(filePath){
