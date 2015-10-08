@@ -1,22 +1,22 @@
 var fs = require('fs')
 module.exports = function(salesDataFilePath){
-	this.getLeastPopularProduct = function(){
+	this.findLeastPopularProduct = function(){
 
 		var productSales = productsSalesInfo(salesDataFilePath)
 		productSales.sort(function(product1, product2){
 			return product1.qty - product2.qty;
 		});
-		var mostPopularProduct = productSales[0]
-		return mostPopularProduct;
+		var leastPopularProduct = productSales[0]
+		return leastPopularProduct;
 	}
 
-	this.getMostPopularProduct = function(){
+	this.mostMostPopularProduct = function(){
 		var productSales = productsSalesInfo(salesDataFilePath)
 		productSales.sort(function(product1, product2){
 			return product1.qty - product2.qty;
 		});
-		var leastPopularProduct = productSales[productSales.length-1]
-		return leastPopularProduct;
+		var mostPopularProduct = productSales[productSales.length-1]
+		return mostPopularProduct;
 	}
 	
 	function productsSalesInfo(filePath){
